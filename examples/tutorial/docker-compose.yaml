@@ -1,0 +1,16 @@
+
+services:
+  
+  mapserver:
+    build:
+      context: ../../container/mapserver/
+      dockerfile: ../../container/mapserver/Dockerfile
+    environment:
+      MAPSERVER_CONFIG_FILE: /usr/local/etc/mapserver.conf
+    ports:
+      - 8080:80
+    volumes:
+      - ./ms4w:/ms4w
+      - ./httpd.d:/usr/local/apache2/conf/httpd.d
+      - ./mapserver.conf:/usr/local/etc/mapserver.conf
+
